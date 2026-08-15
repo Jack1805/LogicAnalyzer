@@ -1,0 +1,22 @@
+# Build folders
+build/
+out/
+
+# IDE
+.vscode/
+.idea/
+.settings/
+.project
+.cproject
+
+# Generated files
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+
+# OS
+Thumbs.db
+Desktop.ini
