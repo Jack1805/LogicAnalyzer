@@ -56,4 +56,4 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BEFORE_SHA: ${{ github.event.before }}
-        run: python3 02_Tool/ci/ai_review.py
+        run: python3 02_Tool/ci/ai_review_inline.py
