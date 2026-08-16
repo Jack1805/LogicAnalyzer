@@ -1,0 +1,30 @@
+name: Logic Analyzer CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t logic-analyzer-build \
+            -f 02_Tool/docker/Dockerfile .
+
+      - name: Verify embedded toolchain
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            logic-analyzer-build \
+            bash -c "
+              arm-none-eabi-gcc --version &&
+              cmake --version &&
+              ninja --version
+            "
